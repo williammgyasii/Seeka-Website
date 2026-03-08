@@ -101,7 +101,7 @@ export default function UseCases() {
   }
 
   return (
-    <section id="use-cases" className="relative py-24 sm:py-32 md:py-44">
+    <section id="use-cases" className="relative py-24 sm:py-32 md:py-44 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           number="005"
@@ -112,7 +112,7 @@ export default function UseCases() {
 
         {/* 3D Carousel */}
         <div
-          className="mt-12 sm:mt-16"
+          className="mt-12 sm:mt-16 overflow-hidden"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >

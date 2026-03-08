@@ -77,7 +77,7 @@ const capabilities = [
 
 export default function ProductShowcase() {
   return (
-    <section className="relative py-24 sm:py-32 md:py-44">
+    <section className="relative py-24 sm:py-32 md:py-44 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           number="001"

@@ -21,7 +21,7 @@ export default function SectionHeader({ number, title, subtitle, description }: 
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-16">
         {/* Left: Title + Number */}
         <div className="md:w-1/2 shrink-0">
-          <h2 className="text-[clamp(2rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.04em] text-text-primary">
+          <h2 className="text-[clamp(1.75rem,5.5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.04em] text-text-primary break-words">
             {title}
           </h2>
           <div className="mt-4 flex items-center gap-3">

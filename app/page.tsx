@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 w-full max-w-[100vw] overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />

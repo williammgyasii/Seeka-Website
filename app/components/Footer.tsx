@@ -9,7 +9,7 @@ const socials = ["Instagram", "LinkedIn", "Twitter", "GitHub"];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-border overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
         {/* Newsletter */}
         <div className="mb-10 sm:mb-12 pb-10 sm:pb-12 border-b border-border">
@@ -22,11 +22,11 @@ export default function Footer() {
                 Get product updates, tips, and insights delivered to your inbox.
               </p>
             </div>
-            <div className="flex gap-2 sm:w-auto w-full">
+            <div className="flex flex-col sm:flex-row gap-2 sm:w-auto w-full">
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="flex-1 sm:w-[240px] rounded-full border border-border bg-bg-card px-4 py-2 text-[13px] text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-accent/40 transition-colors"
+                className="flex-1 sm:w-[240px] min-w-0 rounded-full border border-border bg-bg-card px-4 py-2 text-[13px] text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-accent/40 transition-colors"
               />
               <button className="rounded-full bg-text-primary px-5 py-2 text-[13px] font-semibold text-bg transition-opacity hover:opacity-90 shrink-0">
                 Subscribe

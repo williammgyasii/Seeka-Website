@@ -98,7 +98,7 @@ const features = [
           <div className="mockup-bar w-[95%]" />
           <div className="mockup-bar w-[55%]" />
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <span className="mockup-pill bg-accent-dim text-accent">AI Generated</span>
           <span className="mockup-pill bg-green-dim text-green">Personalized</span>
           <span className="mockup-pill bg-amber-dim text-amber">Tracked</span>
@@ -189,8 +189,8 @@ function AccordionItem({
             transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <div className="pb-6 sm:pb-8 pl-0 sm:pl-[72px]">
-              <div className="grid gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
+              <div className="pb-6 sm:pb-8 pl-0 sm:pl-[72px] min-w-0">
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2 md:gap-8 min-w-0">
                 <p className="text-[13px] sm:text-[14px] leading-relaxed text-text-secondary">
                   {feature.description}
                 </p>
@@ -208,7 +208,7 @@ export default function Features() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="features" className="relative py-24 sm:py-32 md:py-44">
+    <section id="features" className="relative py-24 sm:py-32 md:py-44 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           number="002"

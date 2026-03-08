@@ -6,7 +6,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function CTA() {
   return (
-    <section className="relative py-24 sm:py-32 md:py-44">
+    <section className="relative py-24 sm:py-32 md:py-44 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           number="009"
@@ -22,8 +22,8 @@ export default function CTA() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-card">
-            <div className="gradient-blur absolute top-[-60%] left-[50%] h-[500px] w-[700px] -translate-x-1/2 bg-[rgba(110,110,255,0.06)]" />
-            <div className="gradient-blur absolute bottom-[-40%] right-[20%] h-[300px] w-[400px] bg-[rgba(110,110,255,0.03)]" />
+            <div className="gradient-blur absolute top-[-60%] left-[50%] h-[500px] w-[min(700px,150vw)] -translate-x-1/2 bg-[rgba(110,110,255,0.06)]" />
+            <div className="gradient-blur absolute bottom-[-40%] right-[20%] h-[300px] w-[min(400px,100vw)] bg-[rgba(110,110,255,0.03)]" />
 
             <div className="relative grid gap-10 md:grid-cols-2 md:gap-16 px-6 py-12 sm:px-10 sm:py-16 md:px-14 md:py-20">
               {/* Left side: messaging */}

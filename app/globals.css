@@ -37,6 +37,7 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -44,6 +45,7 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-inter, Inter), system-ui, -apple-system, sans-serif;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Ambient gradient mesh background */
@@ -100,8 +102,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .orb-container {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: min(500px, 90vw);
+  height: min(500px, 90vw);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
@@ -231,6 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-scene {
   perspective: 1200px;
   perspective-origin: center center;
+  overflow: hidden;
 }
 
 .carousel-card-active {
@@ -241,14 +244,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-card-left {
-  transform: translateX(-70%) scale(0.82) rotateY(30deg);
+  transform: translateX(-55%) scale(0.82) rotateY(25deg);
   opacity: 0.5;
   z-index: 10;
   filter: brightness(0.6);
 }
 
 .carousel-card-right {
-  transform: translateX(70%) scale(0.82) rotateY(-30deg);
+  transform: translateX(55%) scale(0.82) rotateY(-25deg);
   opacity: 0.5;
   z-index: 10;
   filter: brightness(0.6);
@@ -258,6 +261,15 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(0) scale(0.7) rotateY(0deg);
   opacity: 0;
   z-index: 0;
+}
+
+@media (min-width: 640px) {
+  .carousel-card-left {
+    transform: translateX(-70%) scale(0.82) rotateY(30deg);
+  }
+  .carousel-card-right {
+    transform: translateX(70%) scale(0.82) rotateY(-30deg);
+  }
 }
 
 /* ── Donut chart segments ── */
