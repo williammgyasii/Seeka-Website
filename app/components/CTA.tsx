@@ -1,51 +1,90 @@
-import { ArrowRight } from "lucide-react";
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Shield, Zap } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 export default function CTA() {
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-700 to-violet-700 px-8 py-16 text-center md:px-16 md:py-24">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-24 -right-24 h-[400px] w-[400px] rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute -bottom-24 -left-24 h-[300px] w-[300px] rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-white/[0.02]" />
-          </div>
+    <section className="relative py-24 sm:py-32 md:py-44">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionHeader
+          number="009"
+          title="Let's Talk."
+          subtitle="Ready to automate your opportunity pipeline?"
+          description="Get started in under 30 seconds — no credit card required."
+        />
 
-          <div className="relative">
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
-              Ready to find and win
-              <br />
-              your next opportunity?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-primary-100 leading-relaxed">
-              Join thousands of professionals who use Seekr to discover, qualify,
-              and close opportunities faster than ever.
-            </p>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-card">
+            <div className="gradient-blur absolute top-[-60%] left-[50%] h-[500px] w-[700px] -translate-x-1/2 bg-[rgba(110,110,255,0.06)]" />
+            <div className="gradient-blur absolute bottom-[-40%] right-[20%] h-[300px] w-[400px] bg-[rgba(110,110,255,0.03)]" />
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="#"
-                className="group flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-base font-semibold text-primary-700 shadow-lg transition-all hover:shadow-xl hover:bg-primary-50 active:scale-[0.98]"
-              >
-                Start for Free
-                <ArrowRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-0.5"
+            <div className="relative grid gap-10 md:grid-cols-2 md:gap-16 px-6 py-12 sm:px-10 sm:py-16 md:px-14 md:py-20">
+              {/* Left side: messaging */}
+              <div>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.15em] text-accent mb-4">
+                  Got a question, challenge, or idea?
+                </p>
+                <h3 className="text-[clamp(1.4rem,4vw,2.8rem)] font-bold leading-[1.1] tracking-[-0.03em] text-text-primary">
+                  Let AI Do the Work
+                  <br />
+                  <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">
+                    So You Can Win Faster
+                  </span>
+                </h3>
+                <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-text-secondary max-w-md">
+                  Join seekers who are discovering and winning opportunities
+                  with intelligent automation.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
+                  <div className="flex items-center gap-1.5">
+                    <Shield size={13} className="text-green" />
+                    <span className="text-[11px] sm:text-[12px] text-text-tertiary">No credit card required</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Zap size={13} className="text-amber" />
+                    <span className="text-[11px] sm:text-[12px] text-text-tertiary">Free plan available</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side: form */}
+              <div className="flex flex-col gap-3">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="rounded-xl border border-border bg-bg-inner px-5 py-3 text-[14px] text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-accent/40 transition-colors"
                 />
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-2 rounded-xl border border-white/20 px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 active:scale-[0.98]"
-              >
-                Talk to Sales
-              </a>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="rounded-xl border border-border bg-bg-inner px-5 py-3 text-[14px] text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-accent/40 transition-colors"
+                />
+                <textarea
+                  placeholder="Your message"
+                  rows={4}
+                  className="rounded-xl border border-border bg-bg-inner px-5 py-3 text-[14px] text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-accent/40 transition-colors resize-none"
+                />
+                <a
+                  href="https://app.seeka.tech/"
+                  className="group mt-2 flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_0_24px_rgba(110,110,255,0.3)] transition-all hover:shadow-[0_0_40px_rgba(110,110,255,0.45)] hover:brightness-110"
+                >
+                  Get Started
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <p className="text-[11px] text-text-tertiary mt-1">
+                  By submitting, you agree to our Privacy Policy.
+                </p>
+              </div>
             </div>
-
-            <p className="mt-6 text-sm text-primary-200">
-              No credit card required &middot; Free plan available forever
-            </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

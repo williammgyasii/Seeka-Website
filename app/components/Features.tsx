@@ -1,135 +1,230 @@
-import {
-  Search,
-  ShieldCheck,
-  Send,
-  BarChart3,
-  Sparkles,
-  Zap,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, ShieldCheck, Send, BarChart3, ChevronDown } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const features = [
   {
+    number: "01",
     icon: Search,
-    title: "Smart Discovery",
+    accentColor: "text-sky",
+    accentBg: "bg-sky-dim",
+    title: "Discovery Engine",
     description:
-      "Surface opportunities from job boards, freelance markets, RFPs, and business leads — all in one unified feed tailored to your profile.",
-    gradient: "from-primary-500 to-primary-600",
-    iconBg: "bg-primary-50",
-    iconColor: "text-primary-600",
+      "Surface opportunities from job boards, freelance platforms, RFPs, and direct leads — all in one intelligent feed powered by AI that learns your preferences.",
+    visual: (
+      <div className="space-y-2">
+        {[
+          { role: "Senior Product Designer", co: "Stripe", match: "94%", mc: "text-green", dot: "bg-green" },
+          { role: "Frontend Engineer", co: "Linear", match: "87%", mc: "text-green", dot: "bg-green" },
+          { role: "Growth Marketing Lead", co: "Vercel", match: "72%", mc: "text-amber", dot: "bg-amber" },
+          { role: "Contract — Design System", co: "Resend", match: "68%", mc: "text-amber", dot: "bg-amber" },
+        ].map((j) => (
+          <div key={j.role} className="mockup-row">
+            <div className="h-8 w-8 rounded-lg bg-accent-dim flex items-center justify-center text-[10px] font-bold text-accent shrink-0">
+              {j.co[0]}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[12px] font-medium text-text-primary truncate">{j.role}</p>
+              <p className="text-[10px] text-text-tertiary">{j.co}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`text-[12px] font-bold ${j.mc}`}>{j.match}</span>
+              <div className={`h-2 w-2 rounded-full ${j.dot}`} />
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
   },
   {
+    number: "02",
     icon: ShieldCheck,
-    title: "Instant Qualification",
+    accentColor: "text-green",
+    accentBg: "bg-green-dim",
+    title: "Qualification AI",
     description:
-      "AI-powered scoring rates every opportunity on fit, competition, and win probability so you focus only on what matters.",
-    gradient: "from-amber-500 to-orange-500",
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
-  },
-  {
-    icon: Send,
-    title: "Outreach Engine",
-    description:
-      "Craft personalized pitches, cover letters, and proposals with AI assistance. Track opens, replies, and follow-up timing automatically.",
-    gradient: "from-emerald-500 to-teal-500",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-  },
-  {
-    icon: BarChart3,
-    title: "Pipeline Management",
-    description:
-      "Visual Kanban boards, conversion analytics, and smart reminders keep your opportunity pipeline moving from first touch to close.",
-    gradient: "from-violet-500 to-purple-500",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
-];
-
-const highlights = [
-  {
-    icon: Sparkles,
-    title: "AI-Powered",
-    description: "Intelligent recommendations and scoring at every step",
-  },
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    description: "Real-time opportunity alerts — never miss a lead",
-  },
-  {
-    icon: Target,
-    title: "Precision Targeting",
-    description: "Filters that match your skills, rate, and preferences",
-  },
-  {
-    icon: TrendingUp,
-    title: "Track Progress",
-    description: "Analytics that show exactly where you're winning",
-  },
-];
-
-export default function Features() {
-  return (
-    <section id="features" className="py-24 md:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary-600">
-            Features
-          </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-            Everything you need to{" "}
-            <span className="gradient-text">win opportunities</span>
-          </h2>
-          <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-            Four powerful pillars that transform how you find, evaluate, pursue,
-            and manage opportunities across your career.
-          </p>
+      "Every opportunity gets an intelligent score based on skill match, salary fit, culture alignment, and competition level — so you only pursue what you can win.",
+    visual: (
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-[11px] font-semibold text-text-tertiary uppercase tracking-wider">Score</span>
+          <span className="text-[22px] font-bold text-green">94%</span>
         </div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:gap-8">
-          {features.map((feature, i) => (
-            <div
-              key={feature.title}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-8 transition-all duration-300 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1"
-            >
-              <div className="absolute top-0 right-0 h-32 w-32 translate-x-8 -translate-y-8 rounded-full bg-gradient-to-br opacity-[0.07] transition-opacity group-hover:opacity-[0.12]" />
-
-              <div
-                className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${feature.iconBg}`}
-              >
-                <feature.icon size={24} className={feature.iconColor} />
+        <div className="space-y-3">
+          {[
+            { label: "Skill Match", value: 96, color: "bg-green" },
+            { label: "Salary Fit", value: 88, color: "bg-sky" },
+            { label: "Culture", value: 91, color: "bg-accent" },
+            { label: "Competition", value: 35, color: "bg-amber" },
+          ].map((b) => (
+            <div key={b.label}>
+              <div className="flex justify-between mb-1.5">
+                <span className="text-[11px] text-text-secondary">{b.label}</span>
+                <span className="text-[11px] font-bold text-text-primary">{b.value}%</span>
               </div>
-
-              <h3 className="text-xl font-bold text-slate-900">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-base leading-relaxed text-slate-600">
-                {feature.description}
-              </p>
-
-              <div
-                className={`mt-6 h-1 w-12 rounded-full bg-gradient-to-r ${feature.gradient} transition-all duration-300 group-hover:w-20`}
-              />
+              <div className="h-2 rounded-full bg-[rgba(255,255,255,0.05)]">
+                <div className={`h-2 rounded-full ${b.color} transition-all duration-700`} style={{ width: `${b.value}%` }} />
+              </div>
             </div>
           ))}
         </div>
-
-        <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-4">
-          {highlights.map((item) => (
-            <div key={item.title} className="text-center">
-              <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary-50">
-                <item.icon size={20} className="text-primary-600" />
-              </div>
-              <h4 className="text-sm font-bold text-slate-900">
-                {item.title}
-              </h4>
-              <p className="mt-1 text-sm text-slate-500">
-                {item.description}
+      </div>
+    ),
+  },
+  {
+    number: "03",
+    icon: Send,
+    accentColor: "text-amber",
+    accentBg: "bg-amber-dim",
+    title: "Outreach Automation",
+    description:
+      "AI-crafted cover letters, proposals, and cold emails — personalized per opportunity. Multi-step sequences with automated follow-ups and open/reply tracking.",
+    visual: (
+      <div>
+        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-border">
+          <span className="text-[10px] text-text-tertiary">To:</span>
+          <span className="text-[11px] text-text-primary font-medium">hiring@stripe.com</span>
+        </div>
+        <div className="flex items-center gap-2 mb-3 pb-3 border-b border-border">
+          <span className="text-[10px] text-text-tertiary">Subj:</span>
+          <span className="text-[11px] text-text-primary font-medium">Re: Senior Product Designer</span>
+        </div>
+        <div className="space-y-2 mb-4">
+          <div className="mockup-bar w-full" />
+          <div className="mockup-bar w-[90%]" />
+          <div className="mockup-bar w-[95%]" />
+          <div className="mockup-bar w-[55%]" />
+        </div>
+        <div className="flex gap-2">
+          <span className="mockup-pill bg-accent-dim text-accent">AI Generated</span>
+          <span className="mockup-pill bg-green-dim text-green">Personalized</span>
+          <span className="mockup-pill bg-amber-dim text-amber">Tracked</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "04",
+    icon: BarChart3,
+    accentColor: "text-rose",
+    accentBg: "bg-rose-dim",
+    title: "Pipeline Management",
+    description:
+      "Visual kanban boards, conversion analytics, smart reminders, and deal velocity tracking — everything to move opportunities from first touch to close.",
+    visual: (
+      <div className="grid grid-cols-3 gap-2">
+        {[
+          { stage: "Applied", color: "bg-sky", items: [{ name: "Vercel", type: "Full-time" }, { name: "Supabase", type: "Contract" }] },
+          { stage: "Interview", color: "bg-amber", items: [{ name: "Stripe", type: "Full-time" }] },
+          { stage: "Offer", color: "bg-green", items: [{ name: "Linear", type: "Full-time" }] },
+        ].map((col) => (
+          <div key={col.stage} className="rounded-lg border border-border bg-[rgba(255,255,255,0.02)] p-2.5">
+            <div className="flex items-center gap-1.5 mb-2">
+              <div className={`h-1.5 w-1.5 rounded-full ${col.color}`} />
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+                {col.stage}
               </p>
             </div>
+            <div className="space-y-1.5">
+              {col.items.map((item) => (
+                <div key={item.name} className="rounded-md bg-[rgba(255,255,255,0.03)] border border-border p-2.5">
+                  <p className="text-[11px] font-medium text-text-primary">{item.name}</p>
+                  <p className="text-[9px] text-text-tertiary mt-0.5">{item.type}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+];
+
+function AccordionItem({
+  feature,
+  isOpen,
+  onToggle,
+}: {
+  feature: (typeof features)[0];
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const Icon = feature.icon;
+
+  return (
+    <div className="border-b border-border last:border-b-0">
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center gap-4 sm:gap-5 py-5 sm:py-6 text-left group"
+      >
+        <span className="text-[12px] font-mono font-semibold text-text-tertiary w-6">
+          {feature.number}
+        </span>
+        <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${feature.accentBg} shrink-0`}>
+          <Icon size={18} className={feature.accentColor} />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-[16px] sm:text-[18px] font-bold text-text-primary tracking-tight group-hover:text-accent transition-colors">
+            {feature.title}
+          </h3>
+        </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="shrink-0"
+        >
+          <ChevronDown size={20} className="text-text-tertiary" />
+        </motion.div>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="pb-6 sm:pb-8 pl-0 sm:pl-[72px]">
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-text-secondary">
+                  {feature.description}
+                </p>
+                <div className="card-visual">{feature.visual}</div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default function Features() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section id="features" className="relative py-24 sm:py-32 md:py-44">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionHeader
+          number="002"
+          title="Our Features"
+          subtitle="Flexible AI solutions for building your modern opportunity pipeline."
+          description="We discover, qualify, and help you win — so you can work smarter, not harder."
+        />
+
+        <div className="rounded-2xl border border-border bg-bg-card px-5 sm:px-8">
+          {features.map((feature, i) => (
+            <AccordionItem
+              key={feature.number}
+              feature={feature}
+              isOpen={i === openIndex}
+              onToggle={() => setOpenIndex(i === openIndex ? -1 : i)}
+            />
           ))}
         </div>
       </div>

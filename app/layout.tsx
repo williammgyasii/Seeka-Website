@@ -1,24 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import SmoothScroll from "./components/SmoothScroll";
+import ParticleBackground from "./components/ParticleBackground";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Seekr — Discover, Qualify & Win Opportunities",
+  title: "Seeka — Discover, Qualify & Win Opportunities",
   description:
-    "Seekr is your all-in-one platform for opportunity discovery, qualification, outreach, and pipeline management. Whether you're job hunting, freelancing, or building a business — Seekr helps you find and win.",
-  keywords: [
-    "job search",
-    "freelancing",
-    "business development",
-    "opportunity management",
-    "outreach",
-    "pipeline management",
-  ],
+    "The all-in-one platform for opportunity discovery, qualification, outreach, and pipeline management.",
 };
 
 export default function RootLayout({
@@ -28,7 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+        <div className="grain" />
+        <ParticleBackground />
+        <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
+      </body>
     </html>
   );
 }
